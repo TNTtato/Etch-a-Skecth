@@ -49,6 +49,9 @@ body {
 }
 .cell {
   box-sizing: border-box;
-  background-color: aliceblue;
-  border: 1px solid gray;
+  background-color: aliceblue;/*
+  border: 1px solid gray;*/
+}
+.hovered {
+  background-color: black;
 }
