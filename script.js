@@ -9,6 +9,7 @@ const eraser = document.getElementById('eraser');
 
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
+let gridClicked = false;
 
 createGrid(gridSize);
 
@@ -36,6 +37,7 @@ function updateGrid(gridSize) {
 
 function pickCellColor() {
   colorPicker.addEventListener('change', (e) => cellColor = e.target.value);
+  colorPicker.addEventListener('click', (e) => cellColor = e.target.value);
 }
 
 //corrections needed
@@ -52,7 +54,10 @@ function fillCells(fullCells){
   });
 }
 
-let gridClicked = false;
+function congfCellBehavior() {
+  const fullCells = document.querySelectorAll('.cell');
+  fillCells(fullCells);
+  }
 
 gridSizeSelector.addEventListener('change', function(e) {
   let sizeLabel = document.getElementById('count-size');
@@ -62,11 +67,6 @@ gridSizeSelector.addEventListener('change', function(e) {
 }, false);
 
 ////changes coming
-
-function congfCellBehavior() {
-const fullCells = document.querySelectorAll('.cell');
-fillCells(fullCells);
-}
 
 gridCont.addEventListener('mousedown', function() {
   gridClicked = true;
