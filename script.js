@@ -1,11 +1,24 @@
-const DEFAULT_SIZE = 64;
+const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#000000';
+const DEFAULT_bgCELL_COLOR = '#ffffff';
+
+const gridCont = document.getElementById('grid-container');
+const colorPicker = document.getElementById('color-picker');
+const gridSizeSelector = document.getElementById('grid-size-selector');
 
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
 
-const gridCont = document.getElementById('grid-container');
-const colorPicker = document.getElementById('color-picker');
+function updateGrid(gridSize) {
+  createGrid(gridSize);
+  fillCells();
+}
+
+gridSizeSelector.addEventListener('change', function(e) {
+  gridSize = e.target.value;
+  console.log(gridSize);
+  updateGrid(gridSize);
+});
 
 function createGrid(gridSize) {
   gridCont.style.cssText = `grid-template-columns: repeat(${gridSize}, 1fr);
@@ -31,6 +44,8 @@ function pickCellColor() {
 createGrid(gridSize);
 pickCellColor();
 
+const fullCells = document.querySelectorAll('.cell');
+let gridClicked = false;
 
 function fillCells(){
   fullCells.forEach(cell => {
@@ -45,10 +60,6 @@ function fillCells(){
   });
 }
 
-
-const fullCells = document.querySelectorAll('.cell');
-let gridClicked = false;
-
 gridCont.addEventListener('mousedown', function() {
   gridClicked = true;
   fillCells();
@@ -59,4 +70,4 @@ gridCont.addEventListener('mouseup', function(){
   fillCells();
 });
 
-
+/////jfhdhgdshdhsagdsh

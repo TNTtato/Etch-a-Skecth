@@ -43,6 +43,7 @@ body {
   width: 499px;
   background-color: black;
   border: 2rem solid rgb(15, 15, 15);
+  margin: 0 auto;
   display: grid;
 /*needs to be done in js*/
   
