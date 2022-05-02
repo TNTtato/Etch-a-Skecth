@@ -28,6 +28,7 @@ body {
   background-color: rgb(177, 177, 177);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .playable-area h1, .lateral-menu h2 {
   text-align: center;

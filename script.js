@@ -5,6 +5,7 @@ const DEFAULT_bgCELL_COLOR = '#ffffff';
 const gridCont = document.getElementById('grid-container');
 const colorPicker = document.getElementById('color-picker');
 const gridSizeSelector = document.getElementById('grid-size-selector');
+const eraser = document.getElementById('eraser');
 
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
@@ -67,8 +68,6 @@ const fullCells = document.querySelectorAll('.cell');
 fillCells(fullCells);
 }
 
-
-
 gridCont.addEventListener('mousedown', function() {
   gridClicked = true;
   pickCellColor();
@@ -79,3 +78,5 @@ gridCont.addEventListener('mouseup', function(){
   gridClicked = false;
   congfCellBehavior();
 });
+
+eraser.addEventListener('click', () => cellColor = DEFAULT_bgCELL_COLOR);
