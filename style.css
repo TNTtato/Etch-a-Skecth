@@ -44,14 +44,16 @@ body {
   background-color: black;
   border: 2rem solid rgb(15, 15, 15);
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
+/*needs to be done in js*/
+  
+/*needs to be done in js*/
 }
 .cell {
   box-sizing: border-box;
-  background-color: aliceblue;/*
+/*need to be done in js*/
+  background-color: aliceblue;
+/*need to be done in js*/
+  /*
   border: 1px solid gray;*/
 }
-.hovered {
-  background-color: black;
-}
+
