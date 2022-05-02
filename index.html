@@ -12,9 +12,14 @@
   <div id="wrapper" class="wrapper">
     <div id="lateral-menu" class="lateral-menu">
       <h2>MENU</h2>
-      <input id="color-picker" type="color" value="#000000">
-      <input type="number" name="grid-size-selector" id="grid-size-selector" value="16" min="10" max="64" step="1" />
-      <div id="btns-area" class="btns-area"></div>
+      <div id="btns-area" class="btns-area">
+        <input id="color-picker" type="color" value="#000000">
+        <div class="size-area" id="size-area">
+          <label for="grid-size-selector">Choose a size for the grid</label>
+          <input type="range" name="grid-size-selector" id="grid-size-selector" value="16" min="10" max="64" step="1" />
+          <label id="count-size" for="grid-size-selector">16</label>
+        </div>
+      </div>
     </div>
     <div id="playable-area" class="playable-area">
       <h1 id="title-sketch" class="title-sketch">Etch a Sketch</h1>

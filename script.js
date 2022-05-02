@@ -9,45 +9,36 @@ const gridSizeSelector = document.getElementById('grid-size-selector');
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
 
-function updateGrid(gridSize) {
-  createGrid(gridSize);
-  fillCells();
-}
-
-gridSizeSelector.addEventListener('change', function(e) {
-  gridSize = e.target.value;
-  console.log(gridSize);
-  updateGrid(gridSize);
-});
+createGrid(gridSize);
 
 function createGrid(gridSize) {
+  setGridSize(gridSize);
+  for (let row = 1; row <= gridSize; row++){
+    for (let column = 1; column <= gridSize; column++) {
+      const cell = document.createElement('div');
+      cell.style.cssText = `box-sizing: border-box;
+      background-color: ${DEFAULT_bgCELL_COLOR};`;
+      cell.setAttribute('class', 'cell');
+      gridCont.appendChild(cell);
+    }   
+  }
+}
+function setGridSize(gridSize) {
   gridCont.style.cssText = `grid-template-columns: repeat(${gridSize}, 1fr);
   grid-template-rows: repeat(${gridSize}, 1fr);`;
-  for (let row = 1; row <= gridSize; row++) {
-    for (let column = 1; column <= gridSize; column++) {
-      const cellElement = document.createElement('div');
-      cellElement.setAttribute('class', 'cell');
-      gridCont.appendChild(cellElement);
-    }
-  }
+}
+
+function updateGrid(gridSize) {
+  gridCont.innerHTML = "";
+  createGrid(gridSize);
 }
 
 function pickCellColor() {
-  colorPicker.addEventListener('change', function(e) {
-    cellColor = e.target.value;
-    console.log(cellColor);
-  }, false);
-  console.log(cellColor);
-  //return cellColor
+  colorPicker.addEventListener('change', (e) => cellColor = e.target.value);
 }
 
-createGrid(gridSize);
-pickCellColor();
-
-const fullCells = document.querySelectorAll('.cell');
-let gridClicked = false;
-
-function fillCells(){
+//corrections needed
+function fillCells(fullCells){
   fullCells.forEach(cell => {
     cell.addEventListener('mousemove', function() {
       if(gridClicked) {
@@ -60,14 +51,31 @@ function fillCells(){
   });
 }
 
+let gridClicked = false;
+
+gridSizeSelector.addEventListener('change', function(e) {
+  let sizeLabel = document.getElementById('count-size');
+  gridSize = e.target.value;
+  updateGrid(gridSize);
+  sizeLabel.innerText = `${gridSize}`;
+}, false);
+
+////changes coming
+
+function congfCellBehavior() {
+const fullCells = document.querySelectorAll('.cell');
+fillCells(fullCells);
+}
+
+
+
 gridCont.addEventListener('mousedown', function() {
   gridClicked = true;
-  fillCells();
+  pickCellColor();
+  congfCellBehavior();
 });
 
 gridCont.addEventListener('mouseup', function(){
   gridClicked = false;
-  fillCells();
+  congfCellBehavior();
 });
-
-/////jfhdhgdshdhsagdsh

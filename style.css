@@ -15,7 +15,7 @@ body {
   justify-content: space-between;
 }
 .lateral-menu {
-  width: 30%;
+  width: 50%;
   background-color: rgb(66, 66, 66);
   display: flex;
   flex-direction: column;
@@ -25,7 +25,9 @@ body {
   height: 40%;
   border: 5px groove navy;
   border-radius: 0.5rem;
-  background-color: black;
+  background-color: rgb(177, 177, 177);
+  display: flex;
+  flex-direction: column;
 }
 .playable-area h1, .lateral-menu h2 {
   text-align: center;
@@ -45,6 +47,7 @@ body {
   border: 2rem solid rgb(15, 15, 15);
   margin: 0 auto;
   display: grid;
+  box-sizing: border-box;
 /*needs to be done in js*/
   
 /*needs to be done in js*/
