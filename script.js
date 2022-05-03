@@ -38,20 +38,6 @@ function updateGrid(gridSize) {
   createGrid(gridSize);
 }
 
-function pickCellColor() {
-  colorPicker.addEventListener('change', (e) => {
-    cellColor = e.target.value;
-    rainbowActivated = false;
-    mode.innerText = 'COLOR';
-  });
-  colorPicker.addEventListener('click', (e) => {
-    cellColor = e.target.value;
-    rainbowActivated = false;
-    mode.innerText = 'COLOR';
-  });
-}
-
-//corrections needed
 function fillCells(fullCells){
   fullCells.forEach(cell => {
     cell.addEventListener('mousemove', function() {
@@ -90,6 +76,17 @@ eraser.addEventListener('click', () => {
   mode.innerText = 'ERASER';
 });
 
+colorPicker.addEventListener('change', (e) => {
+  cellColor = e.target.value;
+  rainbowActivated = false;
+  mode.innerText = 'COLOR';
+});
+colorPicker.addEventListener('click', (e) => {
+  cellColor = e.target.value;
+  rainbowActivated = false;
+  mode.innerText = 'COLOR';
+});
+
 gridSizeSelector.addEventListener('change', function(e) {
   let sizeLabel = document.getElementById('count-size');
   gridSize = e.target.value;
@@ -97,12 +94,8 @@ gridSizeSelector.addEventListener('change', function(e) {
   sizeLabel.innerText = `${gridSize}`;
 }, false);
 
-////changes coming
-
 gridCont.addEventListener('mousedown', function() {
   gridClicked = true;
-  pickCellColor();
-  //genRainbow();
   congfCellBehavior();
 });
 
