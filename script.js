@@ -6,10 +6,12 @@ const gridCont = document.getElementById('grid-container');
 const colorPicker = document.getElementById('color-picker');
 const gridSizeSelector = document.getElementById('grid-size-selector');
 const eraser = document.getElementById('eraser');
+const rainbow = document.getElementById('rainbow');
 
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
 let gridClicked = false;
+let rainbowActivated = false;
 
 createGrid(gridSize);
 
@@ -36,8 +38,18 @@ function updateGrid(gridSize) {
 }
 
 function pickCellColor() {
-  colorPicker.addEventListener('change', (e) => cellColor = e.target.value);
-  colorPicker.addEventListener('click', (e) => cellColor = e.target.value);
+  colorPicker.addEventListener('change', (e) => {
+    cellColor = e.target.value;
+    rainbowActivated = false;
+  });
+  colorPicker.addEventListener('click', (e) => {
+    cellColor = e.target.value;
+    rainbowActivated = false;
+  });
+  eraser.addEventListener('click', () => {
+    cellColor = DEFAULT_bgCELL_COLOR;
+    rainbowActivated = false;
+  });
 }
 
 //corrections needed
@@ -45,10 +57,12 @@ function fillCells(fullCells){
   fullCells.forEach(cell => {
     cell.addEventListener('mousemove', function() {
       if(gridClicked) {
+        if(rainbowActivated) genRainbow();
         cell.style.cssText = `background-color: ${cellColor};`;
       }
     });
     cell.addEventListener('click', function() {
+      if(rainbowActivated) genRainbow();
       cell.style.cssText = `background-color: ${cellColor};`;
     });
   });
@@ -57,7 +71,17 @@ function fillCells(fullCells){
 function congfCellBehavior() {
   const fullCells = document.querySelectorAll('.cell');
   fillCells(fullCells);
+}
+
+function genRainbow() {
+  let R = Math.floor(Math.random() * 256);
+  let G = Math.floor(Math.random() * 256);
+  let B = Math.floor(Math.random() * 256);
+  cellColor = `rgb(${R}, ${G}, ${B})`;
+  console.log(cellColor)
   }
+
+rainbow.addEventListener('click', () => rainbowActivated = true);
 
 gridSizeSelector.addEventListener('change', function(e) {
   let sizeLabel = document.getElementById('count-size');
@@ -71,6 +95,7 @@ gridSizeSelector.addEventListener('change', function(e) {
 gridCont.addEventListener('mousedown', function() {
   gridClicked = true;
   pickCellColor();
+  //genRainbow();
   congfCellBehavior();
 });
 
@@ -78,5 +103,3 @@ gridCont.addEventListener('mouseup', function(){
   gridClicked = false;
   congfCellBehavior();
 });
-
-eraser.addEventListener('click', () => cellColor = DEFAULT_bgCELL_COLOR);
