@@ -7,6 +7,7 @@ const colorPicker = document.getElementById('color-picker');
 const gridSizeSelector = document.getElementById('grid-size-selector');
 const eraser = document.getElementById('eraser');
 const rainbow = document.getElementById('rainbow');
+const mode = document.getElementById('mode');
 
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
@@ -41,14 +42,12 @@ function pickCellColor() {
   colorPicker.addEventListener('change', (e) => {
     cellColor = e.target.value;
     rainbowActivated = false;
+    mode.innerText = 'COLOR';
   });
   colorPicker.addEventListener('click', (e) => {
     cellColor = e.target.value;
     rainbowActivated = false;
-  });
-  eraser.addEventListener('click', () => {
-    cellColor = DEFAULT_bgCELL_COLOR;
-    rainbowActivated = false;
+    mode.innerText = 'COLOR';
   });
 }
 
@@ -78,10 +77,18 @@ function genRainbow() {
   let G = Math.floor(Math.random() * 256);
   let B = Math.floor(Math.random() * 256);
   cellColor = `rgb(${R}, ${G}, ${B})`;
-  console.log(cellColor)
   }
 
-rainbow.addEventListener('click', () => rainbowActivated = true);
+rainbow.addEventListener('click', () => {
+  rainbowActivated = true;
+  mode.innerText = 'RAINBOW';
+});
+
+eraser.addEventListener('click', () => {
+  cellColor = DEFAULT_bgCELL_COLOR;
+  rainbowActivated = false;
+  mode.innerText = 'ERASER';
+});
 
 gridSizeSelector.addEventListener('change', function(e) {
   let sizeLabel = document.getElementById('count-size');
