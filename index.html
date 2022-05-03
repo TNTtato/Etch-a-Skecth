@@ -13,7 +13,10 @@
     <div id="lateral-menu" class="lateral-menu">
       <h2>MENU</h2>
       <div id="btns-area" class="btns-area">
-        <input id="color-picker" type="color" value="#000000">
+        <div class="color-area" id="color-area">
+          <label class="label-color-picker" for="color-picker">Choose a color from the palet</label>
+          <input class="color-picker" id="color-picker" type="color" value="#000000">
+        </div>
         <button id="rainbow" class="rainbow">Rainbow Mode</button>
         <button class="eraser" id="eraser">Eraser</button>
         <div class="size-area" id="size-area">
@@ -21,8 +24,11 @@
           <input type="range" name="grid-size-selector" id="grid-size-selector" value="16" min="10" max="64" step="1" />
           <label id="count-size" for="grid-size-selector">16</label>
         </div>
+        <button id="default-btn" class="default-btn">Default</button>
       </div>
-      <div class="display-mode" id="display-mode">Currently using: <span id="mode">COLOR</span></div>
+      <div class="display-mode" id="display-mode">
+        Currently using: <span id="mode">COLOR</span>
+      </div>
     </div>
     <div id="playable-area" class="playable-area">
       <h1 id="title-sketch" class="title-sketch">Etch a Sketch</h1>

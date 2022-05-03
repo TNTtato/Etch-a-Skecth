@@ -22,14 +22,52 @@ body {
   justify-content: center;
 }
 .btns-area {
-  height: 40%;
-  border: 5px groove navy;
-  border-radius: 0.5rem;
+  height: 60%;
+  border-radius: 1.2rem;
+  margin: 0 0.5rem;
   background-color: rgb(177, 177, 177);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  color: rgb(61, 58, 58);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
+
+.color-picker, .label-color-picker {
+  display: block;
+  margin: 0 auto;
+}
+
+.label-color-picker {
+  text-align: center;
+}
+
+.color-picker {
+  border-radius: 1.2rem;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.size-area {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+input[type="color"] {
+  border-style: none;
+  
+  border-radius: 50%;
+	width: 6rem;
+	height: 3rem;
+}
+
+.btns-area button {
+  width: 6rem;
+  margin: 0 auto;
+  padding: 0.8rem 0;
+  border-radius: 0.8rem;
+}
+
 .playable-area h1, .lateral-menu h2 {
   text-align: center;
 }
@@ -49,16 +87,14 @@ body {
   margin: 0 auto;
   display: grid;
   box-sizing: border-box;
-/*needs to be done in js*/
-  
-/*needs to be done in js*/
 }
 .cell {
   box-sizing: border-box;
-/*need to be done in js*/
-  background-color: aliceblue;
-/*need to be done in js*/
-  /*
-  border: 1px solid gray;*/
+  background-color: rgb(255, 255, 255);
+}
+
+.display-mode {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
 }
 

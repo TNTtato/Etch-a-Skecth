@@ -8,6 +8,8 @@ const gridSizeSelector = document.getElementById('grid-size-selector');
 const eraser = document.getElementById('eraser');
 const rainbow = document.getElementById('rainbow');
 const mode = document.getElementById('mode');
+const defaultBtn = document.getElementById('default-btn');
+const sizeLabel = document.getElementById('count-size');
 
 let gridSize = DEFAULT_SIZE;
 let cellColor = DEFAULT_COLOR;
@@ -88,7 +90,6 @@ colorPicker.addEventListener('click', (e) => {
 });
 
 gridSizeSelector.addEventListener('change', function(e) {
-  let sizeLabel = document.getElementById('count-size');
   gridSize = e.target.value;
   updateGrid(gridSize);
   sizeLabel.innerText = `${gridSize}`;
@@ -102,4 +103,15 @@ gridCont.addEventListener('mousedown', function() {
 gridCont.addEventListener('mouseup', function(){
   gridClicked = false;
   congfCellBehavior();
+});
+
+defaultBtn.addEventListener('click', function () {
+  rainbowActivated = false;
+  cellColor = DEFAULT_COLOR;
+  colorPicker.value = DEFAULT_COLOR;
+  gridSizeSelector.value = DEFAULT_SIZE;
+  gridSize = DEFAULT_SIZE;
+  updateGrid(gridSize);
+  mode.innerText = 'COLOR';
+  sizeLabel.innerText = '16';
 });
